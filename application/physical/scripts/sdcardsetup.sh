@@ -669,7 +669,7 @@ if [ ! -z "$__MASTERHOSTNAME" ]; then tmp="-A ${__MASTERHOSTNAME} "; fi
 if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then tmp="${tmp} -M"; fi
 _todolive="pacman -Syu --noconfirm";
 if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then _todolive=" ${_todolive}; pacman -S --noconfirm python2-pygit2"; fi
-_todolive=" ${_todolive}; curl -o bootstrap_salt.sh -L https://bootstrap.saltstack.com --silent -k; sleep 2; $_SUDO sh bootstrap_salt.sh -U -i ${__HOSTNAME} ${tmp} git v2016.3.0";
+_todolive=" ${_todolive}; curl -o bootstrap_salt.sh -L https://bootstrap.saltstack.com --silent -k; sleep 2; $_SUDO sh bootstrap_salt.sh -U -i ${__HOSTNAME} ${tmp} git v2016.11.0";
 if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then _todolive=" ${_todolive}; sleep 60; salt-key -A -y; echo 'Sleeping 60 seconds to settle down salt.'; sleep 60; salt '${__MASTERHOSTNAME}' state.apply dnsmasq; salt '${__MASTERHOSTNAME}' state.apply ntp-server; salt '${__MASTERHOSTNAME}' state.apply common; salt '${__MASTERHOSTNAME}' state.apply power-button"; fi
 _todolive=" ${_todolive}; timedatectl set-ntp true;"
 
